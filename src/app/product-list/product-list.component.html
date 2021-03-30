@@ -1,0 +1,32 @@
+<h2>Products</h2>
+<!-- suivre le lien suivant pour réaliser ce tuto: https://angular.io/start-->
+
+<!-- dans un premier lieu on: Crée la liste de produits-->
+<!-- dans un second lieu on: Passe des données à un composant enfant-->
+
+
+<div *ngFor="let product of products"> <!-- *ngFor : permet de faire un boucle-->
+  <h3>
+    <a [title]="product.name + ' details'">
+      {{product.name}}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description"> <!-- *ngIf : permet de faire un condition sur la préence ou pas de description-->
+    Description: {{product.description}}
+  </p>
+
+   <button (click)="share()">         <!-- la fonction shar() :permet d'activer le button au click et est déclarée dans le fichier: product-list.component.ts  et ça affiche l'alerte.-->
+    Share
+  </button>
+
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()">
+  </app-product-alerts>
+</div>
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
